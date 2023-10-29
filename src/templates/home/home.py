@@ -11,60 +11,50 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_home(object):
-    def setupUi(self, home):
-        home.setObjectName("home")
-        home.resize(519, 754)
-        home.setAutoFillBackground(False)
-        home.setStyleSheet("#home\n"
+class Ui_header(object):
+    def setupUi(self, header):
+        header.setObjectName("header")
+        header.resize(534, 110)
+        header.setMaximumSize(QtCore.QSize(16777215, 110))
+        header.setAutoFillBackground(False)
+        header.setStyleSheet("#home\n"
 "{\n"
-"    background-color: #232327;\n"
-"}\n"
-"\n"
-"")
-        self.verticalLayout = QtWidgets.QVBoxLayout(home)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.label = QtWidgets.QLabel(home)
+"    background-color: #202020;\n"
+"}")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(header)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.lb_logo = QtWidgets.QLabel(header)
+        self.lb_logo.setMaximumSize(QtCore.QSize(100, 60))
+        self.lb_logo.setText("")
+        self.lb_logo.setPixmap(QtGui.QPixmap(":/header/logo"))
+        self.lb_logo.setScaledContents(True)
+        self.lb_logo.setAlignment(QtCore.Qt.AlignCenter)
+        self.lb_logo.setObjectName("lb_logo")
+        self.horizontalLayout.addWidget(self.lb_logo)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.label = QtWidgets.QLabel(header)
+        self.label.setMaximumSize(QtCore.QSize(16777215, 60))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(":/home/mr_logo.png"))
+        self.label.setPixmap(QtGui.QPixmap(":/header/close"))
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
-        self.verticalLayout_3.addWidget(self.label)
-        self.verticalLayout.addLayout(self.verticalLayout_3)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.pushButton_2 = QtWidgets.QPushButton(home)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout.addWidget(self.pushButton_2)
-        self.pushButton = QtWidgets.QPushButton(home)
-        self.pushButton.setStyleSheet("color: \"white\";\n"
-"background-color: \"280CD3\"")
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
-        self.pushButton_3 = QtWidgets.QPushButton(home)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.horizontalLayout.addWidget(self.pushButton_3)
-        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.horizontalLayout.addWidget(self.label)
 
-        self.retranslateUi(home)
-        QtCore.QMetaObject.connectSlotsByName(home)
+        self.retranslateUi(header)
+        QtCore.QMetaObject.connectSlotsByName(header)
 
-    def retranslateUi(self, home):
+    def retranslateUi(self, header):
         _translate = QtCore.QCoreApplication.translate
-        home.setWindowTitle(_translate("home", "Form"))
-        self.pushButton_2.setText(_translate("home", "PushButton"))
-        self.pushButton.setText(_translate("home", "PushButton"))
-        self.pushButton_3.setText(_translate("home", "PushButton"))
+        header.setWindowTitle(_translate("header", "Form"))
 import src.resource.resource_rc
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    home = QtWidgets.QWidget()
-    ui = Ui_home()
-    ui.setupUi(home)
-    home.show()
+    header = QtWidgets.QWidget()
+    ui = Ui_header()
+    ui.setupUi(header)
+    header.show()
     sys.exit(app.exec_())

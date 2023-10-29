@@ -1,5 +1,7 @@
 <RCC>
-  <qresource prefix="home">
-    <file>mr_logo.png</file>
+  <qresource prefix="header">
+    <file alias="close">header/close.png</file>
+    <file alias="logo">header/mr_logo.png</file>
   </qresource>
+  <qresource prefix="home"/>
 </RCC>
