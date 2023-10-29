@@ -1,4 +1,6 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QLabel, QWidget
+from PyQt5.QtGui import QBrush, QColor, QPen
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QLabel, QWidget, QGraphicsScene, QGraphicsView
 import sys
 
 # Interfaces .UI
@@ -31,14 +33,11 @@ class MrMoneyManager(QMainWindow):
         self.core_content_layout = QVBoxLayout()
         self.footer_layout = QHBoxLayout()
 
-        # Instanciar QWidgets
-        self.widget_ui_core = QWidget(self)
-        self.widget_ui_footer = QWidget(self)
-
         # Instanciar interfaces .ui
         self.initHeader()
-        self.initCore()
         self.initFooter()
+        self.initCore()
+
         self.initMain()
 
         # Inserir interfaces .ui em seus devidos layouts
@@ -63,7 +62,37 @@ class MrMoneyManager(QMainWindow):
         self.widget_ui_header.setMaximumHeight(60)
 
     def initCore(self):
-        self.widget_ui_core.setStyleSheet("background-color: #232327 ")
+        self.widget_ui_core = QWidget(self)
+        self.widget_ui_core.setMaximumWidth(self.width)
+        self.widget_ui_core.setMaximumHeight(self.height - self.widget_ui_header.height() - self.widget_ui_footer.height())
+
+        self.widget_ui_core.setMinimumWidth(self.width)
+        self.widget_ui_core.setMinimumHeight(self.height - self.widget_ui_header.height() - self.widget_ui_footer.height())
+
+        self.widget_ui_core.setObjectName("core")
+        self.widget_ui_core.setStyleSheet("#core {background-color: #232327}" )
+
+        # Essa eh a cena onde inserimos os componentes/itens
+        self.scene = QGraphicsScene()
+
+        # Widget que exibe a cena
+        self.view = QGraphicsView(self.scene)
+        self.view.setObjectName("circle")
+        self.view.setStyleSheet("#circle {background-color: #232327; border: none}")
+
+        self.createSectors(self.view)
+
+        self.view.setMinimumHeight(500)
+        self.view.setMinimumWidth(500)
+        self.view.setMaximumWidth(500)
+        self.view.setMaximumHeight(500)
+
+        self.view.setParent(self.widget_ui_core)
+
+        self.width_view = int((self.widget_ui_core.width() / 2) - (self.view.width() / 2))
+        self.height_view = int((self.widget_ui_core.height() / 2) - (self.view.height() / 2))
+
+        self.view.move(self.width_view, self.height_view)
 
     def initFooter(self):
         self.widget_ui_footer = QWidget(self)
@@ -75,6 +104,41 @@ class MrMoneyManager(QMainWindow):
         self.header_layout.addWidget(self.widget_ui_header)
         self.core_content_layout.addWidget(self.widget_ui_core)
         self.footer_layout.addWidget(self.widget_ui_footer)
+
+    def resizeEvent(self, event):
+        # Atualize o tamanho do widget com base no tamanho da janela
+        self.width = event.size().width()
+        self.height = event.size().height()
+
+    def createSectors(self, widget):
+        value1 = 0.4
+        value2 = 0.6
+
+        # Angulo inicial e final dos setores
+        start_angle = 0
+        end_angle1 = 360 * value1
+        end_angle2 = 360 * (value1 + value2)
+
+        # Desenha o primeiro setor
+        self.draw_sector(self.scene, start_angle, end_angle1, QColor("#77AE7D"))
+
+        # Desenha o segundo setor
+        self.draw_sector(self.scene, end_angle1, end_angle2, QColor("#e74c3c"))
+
+        # Desenha um círculo no meio
+        self.draw_circle_in_middle(self.scene, QColor("#232327"))
+
+
+    def draw_sector(self, widget, start_angle, end_angle, color):
+        sector = widget.addEllipse(50, 50, 300, 300, QPen(QColor("#FFFFFF"), 5), QBrush(color))
+        sector.setStartAngle(int(start_angle * 16))
+        sector.setSpanAngle(int((end_angle - start_angle) * 16))
+
+    def draw_circle_in_middle(self, widget, color):
+        middle_circle = widget.addEllipse(100, 100, 200, 200, QPen(QColor("#FFFFFF"), 5), QBrush(color))
+        middle_circle.setZValue(100)
+
+
 
 def window():
     app = QApplication(sys.argv)
