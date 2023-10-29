@@ -4,4 +4,8 @@
     <file alias="logo">header/mr_logo.png</file>
   </qresource>
   <qresource prefix="home"/>
+  <qresource prefix="footer">
+    <file alias="home_selected">footer/home.png</file>
+    <file alias="signal">footer/signal.png</file>
+  </qresource>
 </RCC>

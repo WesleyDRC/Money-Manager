@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'home.ui'
+# Form implementation generated from reading ui file 'header.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -17,14 +17,14 @@ class Ui_header(object):
         header.resize(534, 110)
         header.setMaximumSize(QtCore.QSize(16777215, 110))
         header.setAutoFillBackground(False)
-        header.setStyleSheet("#home\n"
+        header.setStyleSheet("#header\n"
 "{\n"
-"    background-color: #202020;\n"
+"    background-color: #2E2E33;\n"
 "}")
         self.horizontalLayout = QtWidgets.QHBoxLayout(header)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.lb_logo = QtWidgets.QLabel(header)
-        self.lb_logo.setMaximumSize(QtCore.QSize(100, 60))
+        self.lb_logo.setMaximumSize(QtCore.QSize(120, 70))
         self.lb_logo.setText("")
         self.lb_logo.setPixmap(QtGui.QPixmap(":/header/logo"))
         self.lb_logo.setScaledContents(True)
