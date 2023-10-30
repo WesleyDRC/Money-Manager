@@ -6,6 +6,7 @@ import sys
 # Interfaces .UI
 from src.templates.header.header import Ui_header
 from src.templates.footer.footer import Ui_footer
+from src.templates.core.components.limitAndExpense.limit_and_expense import Ui_limitAndExpense
 
 class MrMoneyManager(QMainWindow):
     def __init__(self, app):
@@ -80,7 +81,11 @@ class MrMoneyManager(QMainWindow):
         self.view.setObjectName("circle")
         self.view.setStyleSheet("#circle {background-color: #232327; border: none}")
 
-        self.createSectors(self.view)
+        self.ui_limit_and_expense = Ui_limitAndExpense()
+        self.ui_limit_and_expense.setupUi(self.widget_ui_core)
+        
+
+        #self.createSectors(self.view)
 
         self.view.setMinimumHeight(500)
         self.view.setMinimumWidth(500)
