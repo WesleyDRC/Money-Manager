@@ -27,7 +27,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.packageManager": "yarn",
   //======================================================================//
   "editor.fontSize": 14,
   "editor.lineHeight": 24,
@@ -37,7 +36,7 @@
   "editor.renderControlCharacters": false,
   "editor.renderLineHighlight": "gutter",
   "editor.insertSpaces": false,
-  "editor.tabSize": 2,
+  "editor.tabSize": 4,
   //files
   "files.eol": "\n",
   "files.insertFinalNewline": true,
@@ -51,16 +50,6 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "workbench.colorTheme": "Deep Ocean - Blue",
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": false
-  },
   "terminal.integrated.tabs.enabled": true,
   "explorer.compactFolders": false,
   "customizeUI.stylesheet": {
@@ -78,5 +67,5 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.zoomLevel": 0
+  "window.zoomLevel": 0.3
 }

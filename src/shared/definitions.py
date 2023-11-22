@@ -1,0 +1,1 @@
+APPLICATION_WINDOW_TITLE = "Money Manager"
