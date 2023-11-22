@@ -34,29 +34,40 @@ class MainController:
   def setup_ui_objects(self):
     self.header_widget = QtW.QWidget(self.main_view)
     self.header_ui = Ui_header()
+    self.header_ui.setupUi(self.header_widget)
+
+    self.content_widget = QtW.QWidget(self.main_view)
 
     self.footer_widget = QtW.QWidget(self.main_view)
     self.footer_ui = Ui_footer()
+    self.footer_ui.setupUi(self.footer_widget)
 
     self.configure_interface()
 
   def configure_interface(self):
-    self.setup_all_ui()
+    self.layout_all_ui()
     self.configure_layout()
 
-  def setup_all_ui(self):
-    self.header_ui.setupUi(self.header_widget)
-    self.footer_ui.setupUi(self.footer_widget)
+  def layout_all_ui(self):
+    self.lt_header = QtW.QVBoxLayout()
+    self.lt_header.addWidget(self.header_widget)
+
+    self.lt_content = QtW.QVBoxLayout()
+    self.lt_content.addWidget(self.content_widget)
+
+    self.lt_footer = QtW.QVBoxLayout()
+    self.lt_footer.addWidget(self.footer_widget)
+
+    self.main_view.main_layout.addLayout(self.lt_header)
+    self.main_view.main_layout.addLayout(self.lt_content)
+    self.main_view.main_layout.addLayout(self.lt_footer)
+
 
   def configure_layout(self):
-    self.header_widget.move(0,0)
+    #self.header_widget.move(0,0)
     print(Parameters.getScreenWidth())
-    self.header_widget.setMaximumWidth(Parameters.getScreenWidth())
 
-    self.header_widget.setSizePolicy(QtW.QSizePolicy.Expanding, QtW.QSizePolicy.Expanding)
+    #self.header_widget.setSizePolicy(QtW.QSizePolicy.Expanding, QtW.QSizePolicy.Expanding)
 
-    self.footer_widget.move(0, self.main_view.height())
+    #self.footer_widget.move(0, self.main_view.height())
     self.main_view.showMaximized()
-
-  def resizeEvent():
-    print("tewsteee")
