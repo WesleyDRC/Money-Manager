@@ -70,7 +70,7 @@ class MainController:
     self.header_layout = QtW.QVBoxLayout()
     self.header_layout.addWidget(self.header_widget)
 
-    self.content_layout = QtW.QVBoxLayout()
+    self.content_layout = QtW.QHBoxLayout()
     self.content_layout.addWidget(self.content_widget)
 
     self.footer_layout = QtW.QVBoxLayout()
@@ -84,35 +84,39 @@ class MainController:
     self.main_view.showMaximized()
     self.handleContentCentral("HOME")
 
-
   def handleContentCentral(self, screen):
     self.content_widget.setObjectName("content")
     self.content_widget.setStyleSheet("#content { background-color: #FF0000}")
 
     if(screen == "HOME"):
-      # CHART
-      # Essa eh a cena onde inserimos os componentes/itens
+      self.limit_expense_graph = LimitExpenseGraph()
+      self.draw_chart()
+      self.position_elements("HOME")
+
+  def hide_elements(self):
+    self.limit_expense_widget.hide()
+
+  def draw_chart(self):
+      # This is the scene where insert the components/items
       self.scene = QtW.QGraphicsScene()
 
-      # Widget que exibe a cena
+      # Widget that shows the scene
       self.view = QtW.QGraphicsView(self.scene)
 
-      self.view.setObjectName("circle")
-      self.view.setStyleSheet("#circle {background-color: #232327; border: none}")
-
+      # Style chart
+      self.view.setObjectName("chart")
+      self.view.setStyleSheet("#chart {background-color: #232327; border: none}")
       self.widgets_limits_and_chart_layout = QtW.QVBoxLayout()
       self.widgets_limits_and_chart_layout.setSpacing(0)
       self.widgets_limits_and_chart_layout.setContentsMargins(0,0,0,0)
 
-      self.limit_expense_graph = LimitExpenseGraph()
-
-      value1 = 0.9
-      value2 = 0.1
+      expense = 0.9
+      limit = 0.1
 
       # Angulo inicial e final dos setores
       start_angle = 0
-      end_angle1 = 360 * value1
-      end_angle2 = 360 * (value1 + value2)
+      end_angle1 = 360 * expense
+      end_angle2 = 360 * (expense + limit)
 
       # Desenha o primeiro setor
       self.limit_expense_graph.draw_sector(self.scene, start_angle, end_angle1, QColor("#77AE7D"))
@@ -120,17 +124,18 @@ class MainController:
       # Desenha o segundo setor
       self.limit_expense_graph.draw_sector(self.scene, end_angle1, end_angle2, QColor("#e74c3c"))
 
-      # Desenha um círculo no meio
+      # Desenha um circulo no meio
       self.limit_expense_graph.draw_circle_in_middle(self.scene, QColor("#232327"))
 
+  def position_elements(self, screen):
+    if(screen == "HOME"):
+      self.widgets_limits_and_chart_layout.addStretch()
       self.widgets_limits_and_chart_layout.addWidget(self.limit_expense_widget)
       self.widgets_limits_and_chart_layout.addWidget(self.view)
+      self.widgets_limits_and_chart_layout.addStretch()
 
       self.limit_expense_widget.show()
 
       self.content_layout.addStretch()
       self.content_layout.addLayout(self.widgets_limits_and_chart_layout)
       self.content_layout.addStretch()
-
-  def hide_elements(self):
-    self.limit_expense_widget.hide()
