@@ -1,6 +1,4 @@
-from PyQt5.QtGui import QBrush, QColor, QPen
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QLabel, QWidget, QGraphicsScene, QGraphicsView, QSpacerItem
+from PyQt5.QtWidgets import QApplication
 import sys
 
 # Interfaces .UI
