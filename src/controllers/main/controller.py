@@ -1,16 +1,13 @@
 from PyQt5 import QtWidgets as QtW
-from PyQt5.QtGui import QBrush, QColor, QPen
+from PyQt5.QtGui import QColor
 
 from src.views.main.view import MainView
 
-# Templates
-from src.templates.header.header import Ui_header
-from src.templates.footer.footer import Ui_footer
-from src.templates.core.components.limitAndExpense.limit_and_expense import Ui_limitAndExpense
-
-from src.shared.parameters import Parameters
-
-from src.templates.core.components.limitExpenseGraph.limit_expense_graph import LimitExpenseGraph
+# Interfaces
+from src.views.header.header import Header
+from src.views.footer.footer import Footer
+from src.views.limit_and_expense.limit_and_expense import LimitAndExpense
+from src.views.limit_expense_graph.limit_expense_graph import LimitExpenseGraph
 
 class MainController:
   def __init__(
@@ -22,15 +19,11 @@ class MainController:
     self.header_controller = None
     self.footer_controller = None
 
-    # UI Objects
-    self.header_ui = None
-    self.footer_ui = None
-    self.limit_expense_ui = None
-
-    # Widgets Objects
-    self.header_widget = None
-    self.footer_widget = None
-    self.limit_expense_widget = None
+    # Interface Objects
+    self.header = None
+    self.limit_and_expense = None
+    self.limit_expense_graph = None
+    self.footer = None
 
     # Layout Objects
     self.widgets_limits_and_chart_layout = None
@@ -38,26 +31,18 @@ class MainController:
     self.content_layout = None
     self.footer_layout = None
 
-    self.limit_expense_graph = None
-
     self.main_view = view
 
     self.setup_ui_objects()
 
   def setup_ui_objects(self):
-    self.header_widget = QtW.QWidget(self.main_view)
-    self.header_ui = Ui_header()
-    self.header_ui.setupUi(self.header_widget)
+    self.header = Header()
 
     self.content_widget = QtW.QWidget(self.main_view)
 
-    self.footer_widget = QtW.QWidget(self.main_view)
-    self.footer_ui = Ui_footer()
-    self.footer_ui.setupUi(self.footer_widget)
+    self.footer = Footer()
 
-    self.limit_expense_widget = QtW.QWidget(self.main_view)
-    self.limit_expense_ui = Ui_limitAndExpense()
-    self.limit_expense_ui.setupUi(self.limit_expense_widget)
+    self.limit_and_expense = LimitAndExpense()
 
     self.configure_interface()
 
@@ -68,13 +53,13 @@ class MainController:
 
   def layout_all_ui(self):
     self.header_layout = QtW.QVBoxLayout()
-    self.header_layout.addWidget(self.header_widget)
+    self.header_layout.addWidget(self.header.header_widget)
 
     self.content_layout = QtW.QHBoxLayout()
     self.content_layout.addWidget(self.content_widget)
 
     self.footer_layout = QtW.QVBoxLayout()
-    self.footer_layout.addWidget(self.footer_widget)
+    self.footer_layout.addWidget(self.footer.footer_widget)
 
     self.main_view.main_layout.addLayout(self.header_layout)
     self.main_view.main_layout.addLayout(self.content_layout)
@@ -94,7 +79,7 @@ class MainController:
       self.position_elements("HOME")
 
   def hide_elements(self):
-    self.limit_expense_widget.hide()
+    self.limit_and_expense.limit_expense_widget.hide()
 
   def draw_chart(self):
       # This is the scene where insert the components/items
@@ -130,11 +115,11 @@ class MainController:
   def position_elements(self, screen):
     if(screen == "HOME"):
       self.widgets_limits_and_chart_layout.addStretch()
-      self.widgets_limits_and_chart_layout.addWidget(self.limit_expense_widget)
+      self.widgets_limits_and_chart_layout.addWidget(self.limit_and_expense.limit_expense_widget)
       self.widgets_limits_and_chart_layout.addWidget(self.view)
       self.widgets_limits_and_chart_layout.addStretch()
 
-      self.limit_expense_widget.show()
+      self.limit_and_expense.limit_expense_widget.show()
 
       self.content_layout.addStretch()
       self.content_layout.addLayout(self.widgets_limits_and_chart_layout)
