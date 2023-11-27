@@ -35,12 +35,18 @@ class MainController:
 
     self.setup_ui_objects()
 
+  def init_footer(self):
+    self.footer = Footer()
+
+
+
+
   def setup_ui_objects(self):
     self.header = Header()
 
     self.content_widget = QtW.QWidget(self.main_view)
 
-    self.footer = Footer()
+    self.init_footer()
 
     self.limit_and_expense = LimitAndExpense()
 

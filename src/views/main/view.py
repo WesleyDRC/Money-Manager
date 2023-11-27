@@ -23,6 +23,15 @@ class MainView(QtW.QMainWindow):
         self.main_layout.setSpacing(0)
         self.main_layout.setContentsMargins(0,0,0,0)
 
+        self.btn_teste = QtW.QPushButton(self.main_widget)
+        self.btn_teste.setText("Button1")
+
+                # Adicione o botão ao layout
+        self.main_layout.addWidget(self.btn_teste)
+
+        self.btn_teste.clicked.connect(self.receber_sinal)
+
+
         self.main_widget.setLayout(self.main_layout)
         self.setCentralWidget(self.main_widget)
 
@@ -30,3 +39,7 @@ class MainView(QtW.QMainWindow):
         # Atualize o tamanho do widget com base no tamanho da janela
         Parameters.setScreenWidth(event.size().width())
         Parameters.setScreenHeight(event.size().height())
+
+
+    def receber_sinal(self):
+        print("Teste")
