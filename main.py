@@ -17,12 +17,13 @@ def configureParameters(app: QApplication):
 
 if __name__ == "__main__":
     print("Starting the application")
+
     app = QApplication(sys.argv)
 
     configureParameters(app)
 
     view = MainView()
 
-    MainController(app, view)
+    controller = MainController(app, view)
 
     sys.exit(app.exec_())

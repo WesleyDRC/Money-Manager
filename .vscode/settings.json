@@ -35,8 +35,7 @@
 
   "editor.renderControlCharacters": false,
   "editor.renderLineHighlight": "gutter",
-  "editor.insertSpaces": false,
-  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
   //files
   "files.eol": "\n",
   "files.insertFinalNewline": true,
