@@ -40,15 +40,24 @@ class MainController:
 
     self.setup_ui_objects()
 
+  def init_header(self):
+    self.header = Header()
+
+    self.header.header_widget.setMinimumHeight(90)
+    self.header.header_widget.setMaximumHeight(90)
+
+
   def init_footer(self):
     self.footer = Footer()
 
+    self.footer.footer_widget.setMinimumHeight(90)
+    self.footer.footer_widget.setMaximumHeight(90)
+
     self.footer.footer_ui.btn_spending.clicked.connect(lambda: self.handleContentCentral("SPENDING"))
     self.footer.footer_ui.btn_home.clicked.connect(lambda: self.handleContentCentral("HOME"))
-    print("chegou")
 
   def setup_ui_objects(self):
-    self.header = Header()
+    self.init_header()
 
     self.content_widget = QtW.QWidget(self.main_view)
 
@@ -140,6 +149,7 @@ class MainController:
       self.content_layout.addLayout(self.widgets_limits_and_chart_layout)
       self.content_layout.addStretch()
 
+
     if screen == "SPENDING":
         # Move self.content_widget para a frente
         self.content_widget.raise_()
@@ -149,6 +159,7 @@ class MainController:
 
         # Adiciona novamente à self.content_layout para atualizar a ordem de exibição
         self.content_layout.addWidget(self.content_widget)
+
 
   def clear_layout(self, layout: Union[QtW.QVBoxLayout, QtW.QHBoxLayout], exclude_object=None):
     while layout.count():
