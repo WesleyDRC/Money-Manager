@@ -40,7 +40,7 @@ class CoreController(QObject):
 
         self.core_layouts()
 
-        self._footer_view.button_clicked.connect(lambda button_id: self.handle_content_central(button_id))
+        self._footer_view.handle_content_central.connect(lambda button_id: self.handle_content_central(button_id))
 
     def core_layouts(self):
         self.widgets_limits_and_chart_layout = QtW.QVBoxLayout()
@@ -51,7 +51,6 @@ class CoreController(QObject):
         if(screen == DefinitionsFooter.HOME.value):
             self._limit_expense_graph_view.draw_chart()
             self.position_elements("HOME")
-            self._footer_view.footer_ui.btn_home.setChecked(True)
 
         if(screen == DefinitionsFooter.EXPENSES.value):
             print("SPENDING")

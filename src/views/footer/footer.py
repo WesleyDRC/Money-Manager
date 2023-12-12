@@ -8,6 +8,7 @@ from src.shared.definitions import DefinitionsFooter
 class Footer(QObject):
 
     button_clicked = pyqtSignal(int)
+    handle_content_central = pyqtSignal(int)
 
     def __init__(self):
         super(Footer, self).__init__()
