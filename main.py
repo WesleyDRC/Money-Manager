@@ -4,7 +4,7 @@ import sys
 # Interfaces .UI
 
 from src.views.main.view import MainView
-from src.controllers.main.controller import MainController
+from src.controllers.main.main import MainController
 
 from src.shared.parameters import Parameters
 

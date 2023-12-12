@@ -30,7 +30,10 @@
 	background-color: transparent;
 	border: none;
 	outline: none;
-}</string>
+	qproperty-iconSize: 60px 60px;
+	background-position: center;
+}
+</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <property name="spacing">
@@ -66,50 +69,74 @@
      <property name="spacing">
       <number>0</number>
      </property>
-     <item>
-      <widget class="QPushButton" name="btn_home">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="../../resource/resource.qrc">
-         <normaloff>:/footer/home_selected</normaloff>:/footer/home_selected</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>60</width>
-         <height>60</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_spending">
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="../../resource/resource.qrc">
-         <normaloff>:/footer/signal</normaloff>:/footer/signal</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>60</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="checkable">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_home">
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resource/resource.qrc">
+       <normaloff>:/footer/home</normaloff>
+       <normalon>:/footer/home_selected</normalon>
+       <activeon>:/footer/home_selected</activeon>
+       <selectedon>:/footer/home_selected</selectedon>:/footer/home</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>60</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_spending">
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resource/resource.qrc">
+       <normaloff>:/footer/signal</normaloff>
+       <normalon>:/footer/signal_selected</normalon>
+       <activeon>:/footer/signal_selected</activeon>
+       <selectedon>:/footer/signal_selected</selectedon>:/footer/signal</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>60</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="autoRepeat">
+      <bool>false</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
    <item>
     <spacer name="horizontalSpacer_2">

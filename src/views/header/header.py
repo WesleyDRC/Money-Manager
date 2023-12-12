@@ -7,3 +7,6 @@ class Header:
         self.header_widget = QtW.QWidget()
         self.header_ui = Ui_header()
         self.header_ui.setupUi(self.header_widget)
+
+        self.header_widget.setMinimumHeight(60)
+        self.header_widget.setMaximumHeight(60)

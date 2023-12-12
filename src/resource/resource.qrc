@@ -5,7 +5,9 @@
   </qresource>
   <qresource prefix="home"/>
   <qresource prefix="footer">
-    <file alias="home_selected">footer/home.png</file>
+    <file alias="home">footer/home.png</file>
+    <file alias="home_selected">footer/home_selected.png</file>
     <file alias="signal">footer/signal.png</file>
+    <file alias="signal_selected">footer/signal_selected.png</file>
   </qresource>
 </RCC>

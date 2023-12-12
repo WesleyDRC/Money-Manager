@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'footer.ui'
+# Form implementation generated from reading ui file '.\footer.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -26,7 +26,10 @@ class Ui_footer(object):
 "    background-color: transparent;\n"
 "    border: none;\n"
 "    outline: none;\n"
-"}")
+"    qproperty-iconSize: 60px 60px;\n"
+"    background-position: center;\n"
+"}\n"
+"")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(footer)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setSpacing(0)
@@ -36,26 +39,38 @@ class Ui_footer(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.horizontalLayout_2.addLayout(self.horizontalLayout)
         self.btn_home = QtWidgets.QPushButton(footer)
+        self.btn_home.setFocusPolicy(QtCore.Qt.NoFocus)
         self.btn_home.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/footer/home_selected"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/footer/home"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/footer/home_selected"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(":/footer/home_selected"), QtGui.QIcon.Active, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(":/footer/home_selected"), QtGui.QIcon.Selected, QtGui.QIcon.On)
         self.btn_home.setIcon(icon)
         self.btn_home.setIconSize(QtCore.QSize(60, 60))
+        self.btn_home.setCheckable(True)
+        self.btn_home.setChecked(False)
         self.btn_home.setObjectName("btn_home")
-        self.horizontalLayout.addWidget(self.btn_home)
+        self.horizontalLayout_2.addWidget(self.btn_home)
         self.btn_spending = QtWidgets.QPushButton(footer)
         self.btn_spending.setFocusPolicy(QtCore.Qt.NoFocus)
         self.btn_spending.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/footer/signal"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/footer/signal_selected"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(":/footer/signal_selected"), QtGui.QIcon.Active, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(":/footer/signal_selected"), QtGui.QIcon.Selected, QtGui.QIcon.On)
         self.btn_spending.setIcon(icon1)
         self.btn_spending.setIconSize(QtCore.QSize(60, 60))
-        self.btn_spending.setCheckable(False)
+        self.btn_spending.setCheckable(True)
+        self.btn_spending.setChecked(False)
+        self.btn_spending.setAutoRepeat(False)
+        self.btn_spending.setAutoExclusive(False)
         self.btn_spending.setDefault(False)
         self.btn_spending.setObjectName("btn_spending")
-        self.horizontalLayout.addWidget(self.btn_spending)
-        self.horizontalLayout_2.addLayout(self.horizontalLayout)
+        self.horizontalLayout_2.addWidget(self.btn_spending)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem1)
 
@@ -66,13 +81,3 @@ class Ui_footer(object):
         _translate = QtCore.QCoreApplication.translate
         footer.setWindowTitle(_translate("footer", "Form"))
 import src.resource.resource_rc
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    footer = QtWidgets.QWidget()
-    ui = Ui_footer()
-    ui.setupUi(footer)
-    footer.show()
-    sys.exit(app.exec_())
