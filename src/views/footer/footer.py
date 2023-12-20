@@ -5,13 +5,13 @@ from src.templates.footer.footer import Ui_footer
 
 from src.shared.definitions import DefinitionsFooter
 
-class Footer(QObject):
+class FooterView(QObject):
 
     button_clicked = pyqtSignal(int)
     handle_content_central = pyqtSignal(int)
 
     def __init__(self):
-        super(Footer, self).__init__()
+        super(FooterView, self).__init__()
 
         self.footer_widget = QtW.QWidget()
         self.footer_ui = Ui_footer()

@@ -7,7 +7,7 @@ from src.views.main.view import MainView
 # Interfaces
 from src.views.header.header import Header
 from src.views.core.core import Core
-from src.views.footer.footer import Footer
+from src.views.footer.footer import FooterView
 from src.views.limit_and_expense.limit_and_expense import LimitAndExpense
 from src.views.limit_expense_graph.limit_expense_graph import LimitExpenseGraph
 
@@ -60,6 +60,8 @@ class MainController(QObject):
     # Instantiate controllers
     self.init_controllers()
 
+    self.setup_signals()
+
     self.show_home.emit()
 
   def configure_interface(self):
@@ -71,7 +73,7 @@ class MainController(QObject):
   def init_views(self):
     self.header = Header()
 
-    self.footer = Footer()
+    self.footer = FooterView()
 
     self.core = Core()
 
@@ -103,4 +105,9 @@ class MainController(QObject):
     self.core_controller = CoreController(self.core, self.footer, self.limit_expense_graph, self.limit_and_expense, self.core_layout)
     self.footer_controller = FooterController(self.footer, self.main_view)
 
+  def setup_signals(self):
+    # Show Home
     self.show_home.connect(lambda: self.core_controller.handle_content_central(DefinitionsFooter.HOME.value))
+
+    #Footer
+    self.footer.handle_content_central.connect(lambda button_id: self.core_controller.handle_content_central(button_id))

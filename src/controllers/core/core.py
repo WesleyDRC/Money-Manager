@@ -1,7 +1,7 @@
 # Model
 from src.model.core.core import CoreModel
 
-from src.views.footer.footer import Footer
+from src.views.footer.footer import FooterView
 from src.views.core.core import Core
 from src.views.limit_expense_graph.limit_expense_graph import LimitExpenseGraph
 from src.views.limit_and_expense.limit_and_expense import LimitAndExpense
@@ -18,7 +18,7 @@ class CoreController(QObject):
     def __init__(
         self,
         core: Core,
-        footer: Footer,
+        footer_view: FooterView,
         limit_expense_graph: LimitExpenseGraph,
         limit_and_expense: LimitAndExpense,
         core_lt
@@ -26,8 +26,8 @@ class CoreController(QObject):
         super(CoreController, self).__init__()
 
         # Views
+        self._footer_view = footer_view
         self._core_view = core
-        self._footer_view = footer
         self._limit_expense_graph_view = limit_expense_graph
         self._limit_and_expense_view = limit_and_expense
 
@@ -40,8 +40,6 @@ class CoreController(QObject):
 
         self.core_layouts()
 
-        self._footer_view.handle_content_central.connect(lambda button_id: self.handle_content_central(button_id))
-
     def core_layouts(self):
         self.widgets_limits_and_chart_layout = QtW.QVBoxLayout()
         self.widgets_limits_and_chart_layout.setSpacing(0)
@@ -49,11 +47,11 @@ class CoreController(QObject):
 
     def handle_content_central(self, screen):
         if(screen == DefinitionsFooter.HOME.value):
+            self._footer_view.footer_ui.btn_home.setChecked(True)
             self._limit_expense_graph_view.draw_chart()
             self.position_elements("HOME")
 
         if(screen == DefinitionsFooter.EXPENSES.value):
-            print("SPENDING")
             self.position_elements("SPENDING")
 
     def position_elements(self, screen):

@@ -3,6 +3,15 @@
     <file alias="close">header/close.png</file>
     <file alias="logo">header/mr_logo.png</file>
   </qresource>
+  <qresource prefix="expense_ticket">
+    <file alias="edit">expense_ticket/edit.png</file>
+  </qresource>
+  <qresource prefix="add_expense">
+    <file>add_expense/add_expense.png</file>
+  </qresource>
+  <qresource prefix="expense_modal">
+    <file alias="close">expense_modal/close.png</file>
+  </qresource>
   <qresource prefix="home"/>
   <qresource prefix="footer">
     <file alias="home">footer/home.png</file>
